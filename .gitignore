@@ -1,0 +1,189 @@
+# ═══════════════════════════════════════════════
+#   NeoBank — .gitignore
+#   Spring Boot Backend + Android Mobile
+# ═══════════════════════════════════════════════
+
+
+# ───────────────────────────────────────────────
+# 🔐 GÜVENLİK — ASLA GITHUB'A GİTMEMELİ
+# ───────────────────────────────────────────────
+
+# Ortam değişkenleri ve gizli bilgiler
+.env
+.env.*
+*.env
+secrets.yml
+secrets.yaml
+secrets.properties
+
+# JWT secret, DB şifresi gibi hassas config dosyaları
+application-prod.yml
+application-prod.properties
+application-local.yml
+application-local.properties
+application-secret.yml
+
+# Google / Firebase servis hesabı anahtarları
+google-services.json
+GoogleService-Info.plist
+firebase-adminsdk*.json
+serviceAccountKey.json
+*.keystore
+*.jks
+*.p12
+*.pfx
+key.properties
+
+
+# ───────────────────────────────────────────────
+# ☕ JAVA / MAVEN (Backend)
+# ───────────────────────────────────────────────
+
+# Derleme çıktıları
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.properties
+
+# IDE dosyaları
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+hs_err_pid*
+replay_pid*
+
+
+# ───────────────────────────────────────────────
+# 🤖 ANDROID / GRADLE (Mobile)
+# ───────────────────────────────────────────────
+
+# Gradle build çıktıları
+.gradle/
+build/
+mobile/build/
+mobile/.gradle/
+mobile/app/build/
+
+# Local config (makine spesifik)
+local.properties
+mobile/local.properties
+
+# Gradle Wrapper (jar hariç)
+!gradle/wrapper/gradle-wrapper.jar
+!**/gradle/wrapper/gradle-wrapper.jar
+
+# Android Keystore (imzalama anahtarı — KESİNLİKLE commit edilmemeli)
+*.keystore
+*.jks
+release.keystore
+debug.keystore
+
+# Android profiling
+*.hprof
+
+
+# ───────────────────────────────────────────────
+# 💡 IntelliJ IDEA / STS4 / Eclipse
+# ───────────────────────────────────────────────
+
+# IntelliJ / STS4
+.idea/
+*.iws
+*.iml
+*.ipr
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+
+# Eclipse / STS
+.classpath
+.project
+.settings/
+.factorypath
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Android Studio
+*.orig
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+
+# ───────────────────────────────────────────────
+# 🐳 DOCKER
+# ───────────────────────────────────────────────
+
+# Docker override dosyaları (local ortam farklılıkları)
+docker-compose.override.yml
+docker-compose.local.yml
+
+
+# ───────────────────────────────────────────────
+# 🪟 İŞLETİM SİSTEMİ
+# ───────────────────────────────────────────────
+
+# Windows
+Thumbs.db
+Thumbs.db:encdata
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+.nfs*
+
+
+# ───────────────────────────────────────────────
+# 📋 LOG & GEÇİCİ DOSYALAR
+# ───────────────────────────────────────────────
+
+# Log dosyaları
+*.log
+logs/
+log/
+spring.log
+
+# Geçici dosyalar
+*.tmp
+*.temp
+*.swp
+*.swo
+tmp/
+temp/
+
+
+# ───────────────────────────────────────────────
+# 📦 NODE (Eğer ileride frontend eklenirse)
+# ───────────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-error.log*
