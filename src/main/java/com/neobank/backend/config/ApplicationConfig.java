@@ -14,10 +14,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.neobank.backend.repository.UserRepository;
 
-import lombok.RequiredArgsConstructor;
+
 
 @Configuration
-@RequiredArgsConstructor
+
 public class ApplicationConfig {
 
 	
