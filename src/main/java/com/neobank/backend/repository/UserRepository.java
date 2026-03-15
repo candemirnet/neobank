@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.neobank.backend.entity.User;
 
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
@@ -16,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	
 	Boolean existsByEmail(String email);
 	
-	Boolean existByNationalId(String nationalId);
+	Boolean existsByNationalId(String nationalId);
 	
 }

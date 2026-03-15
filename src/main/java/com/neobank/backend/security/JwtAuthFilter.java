@@ -33,6 +33,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 			throws ServletException,
 			IOException {
 		
+		if (request.getRequestURI().startsWith("/api/v1/auth/")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+        
 		
 		final String header = request.getHeader("Authorization");
 		
