@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.neobank.backend.dto.request.LoginRequest;
+import com.neobank.backend.dto.request.RefreshTokenRequest;
 import com.neobank.backend.dto.request.RegisterRequest;
 import com.neobank.backend.dto.response.AuthResponse;
 import com.neobank.backend.entity.Role;
@@ -112,6 +113,42 @@ public class AuthService {
 				.firstName(user.getFirstName())
 				.lastName(user.getLastName())
 				.build();
+		
+		
+	}
+	
+	public AuthResponse refresh(RefreshTokenRequest request) {
+		
+		String refreshToken = request.getRefreshToken();
+		String email = jwtUtil.extractUsername(refreshToken);
+		
+		if(email == null) {
+			
+			throw new BusinessException("Invalid refresh token", HttpStatus.UNAUTHORIZED);
+			
+		}
+		
+		User user = userRepository.findByEmail(email)
+				.orElseThrow(() -> new BusinessException("User Not Found!", HttpStatus.NOT_FOUND));
+		
+		
+		if(!jwtUtil.isTokenValid(refreshToken, user)) {
+			
+			throw new BusinessException("Refresh token is invalid or has expired" , HttpStatus.UNAUTHORIZED);
+			
+		}
+		
+		String newAccessToken = jwtUtil.generateAccessToken(user);
+		
+		return AuthResponse.builder()
+				.accessToken(newAccessToken)
+				.refreshToken(refreshToken) // refresh token remains same
+				.tokenType("Bearer")
+				.email(user.getEmail())
+				.firstName(user.getFirstName())
+				.lastName(user.getLastName())
+				.build();
+			
 		
 		
 	}
