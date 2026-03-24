@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.neobank.backend.dto.request.LoginRequest;
+import com.neobank.backend.dto.request.RefreshTokenRequest;
 import com.neobank.backend.dto.request.RegisterRequest;
 import com.neobank.backend.dto.response.AuthResponse;
 import com.neobank.backend.service.AuthService;
@@ -41,6 +42,13 @@ public class AuthController {
 	public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request){
 		
 		return ResponseEntity.ok(authService.login(request));
+		
+	}
+	
+	@PostMapping("/refresh")
+	public ResponseEntity<AuthResponse> refresh(@Valid @RequestBody RefreshTokenRequest request){
+		
+		return ResponseEntity.ok(authService.refresh(request));
 		
 	}
 
